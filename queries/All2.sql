@@ -11,7 +11,7 @@ where id = '2172879';
 */
 
 select * From estates a
-where date = '2025-08-21';
+where date = '2025-08-24';
 
 
 

@@ -4,13 +4,25 @@ from flask import Flask, send_from_directory, render_template_string, url_for
 
 app = Flask(__name__)
 
-IMAGE_FOLDER = "C:\\Users\\falds\\Documents\\Martin\\Git\\BoligaApi\\images\\Åkandevej 20"  # Put your images in this folder (relative to app.py)
+IMAGE_FOLDERS = "C:\\Users\\falds\\Documents\\Martin\\Git\\BoligaApi\\images"  # Put your images in this folder (relative to app.py)
 
 @app.route('/')
 def index():
     # List all files in IMAGE_FOLDER
-    files = [f for f in os.listdir(IMAGE_FOLDER) if os.path.isfile(os.path.join(IMAGE_FOLDER, f))]
+    
+    files = []
+    for IMAGE_FOLDER in os.listdir(IMAGE_FOLDERS):
+        folder_path = os.path.join(IMAGE_FOLDERS, IMAGE_FOLDER)
+        if os.path.isdir(folder_path):
+            for f in os.listdir(folder_path):
+                file_path = os.path.join(folder_path, f)
+                if os.path.isfile(file_path):
+                    # Store relative path for serving
+                    files.append(f"{IMAGE_FOLDER}/{f}")
+
+
     # Simple HTML template to show images with direct links
+    
     html = """
     <html>
     <head><title>Local Disk Pictures</title></head>
@@ -30,7 +42,7 @@ def index():
 
 @app.route('/images/<path:filename>')
 def serve_image(filename):
-    return send_from_directory(IMAGE_FOLDER, filename)
+    return send_from_directory(IMAGE_FOLDERS, filename)
 
 if __name__ == "__main__":
     app.run(debug=True)
