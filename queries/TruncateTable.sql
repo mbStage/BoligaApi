@@ -1,2 +1,2 @@
 --SQLite
-DELETE FROM estates_new
+DROP TABLE IF EXISTS estates_new;

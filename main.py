@@ -117,6 +117,8 @@ def main():
                     ,'propertyType':house['propertyType']  
                     ,'squaremeterPrice':house['squaremeterPrice']
                     ,'daysForSale':house['daysForSale']
+                    ,'latitude':house['latitude']
+                    ,'longitude':house['longitude']
                     ,'images':image_list[:-1]      
                     }
 

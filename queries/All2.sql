@@ -8,14 +8,17 @@ ORDER BY a.squaremeterPrice;
 select * From estates a
 where id = '2172879';
 
+
 */
 
 select * From estates a
-where date = '2025-08-24';
+where date = '2025-08-25';
 
 
 
 SELECT * from estates
 WHERE street like 'Faldskærmsvej%';
+
+
 
 

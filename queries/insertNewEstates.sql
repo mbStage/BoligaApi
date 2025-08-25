@@ -17,6 +17,8 @@ a.id
 , CURRENT_DATE AS date
 , 1 AS count
 , 'New' AS comment
+, a.latitude
+, a.longitude
 FROM estates_new a
 LEFT JOIN estates b ON a.id = b.id
 WHERE b.id IS NULL;
@@ -40,6 +42,8 @@ a.id
 , CURRENT_DATE AS date
 , -1 AS count
 , 'Not for sale' AS comment
+, a.latitude
+, a.longitude
 FROM estates a
 LEFT JOIN estates_new b ON a.id = b.id
 LEFT JOIN max_date c ON a.id = c.id AND c.maxDate = a.date AND c.maxComment != 'Not for sale'
@@ -63,6 +67,8 @@ a.id
 , CURRENT_DATE AS date
 , -1 AS count
 , 'Price changed' AS comment
+, a.latitude
+, a.longitude
 FROM estates_new a
 JOIN estates b 
 ON a.id = b.id
