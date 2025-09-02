@@ -65,12 +65,36 @@ a.id
 , a.daysForSale
 , a.images
 , CURRENT_DATE AS date
-, -1 AS count
+, 0 AS count
 , 'Price changed' AS comment
 , a.latitude
 , a.longitude
 FROM estates_new a
 JOIN estates b 
 ON a.id = b.id
-AND a.price != b.price
-WHERE b.id IS NULL;
+AND a.price != b.price;
+
+INSERT INTO estates
+SELECT 
+b.id	
+, b.priceChangePercentTotal	
+, b.energyClass	
+, '-' || b.price	
+, b.buildYear	
+, b.street
+, b.zipCode
+, b.agentDisplayName
+, b.isActive
+, b.propertyType
+, b.squaremeterPrice
+, a.daysForSale
+, a.images
+, CURRENT_DATE AS date
+, 0 AS count
+, 'Price changed' AS comment
+, a.latitude
+, a.longitude
+FROM estates_new a
+JOIN estates b 
+ON a.id = b.id
+AND a.price != b.price;

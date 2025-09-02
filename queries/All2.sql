@@ -12,12 +12,15 @@ where id = '2172879';
 */
 
 select * From estates a
-where date = '2025-08-30';
+where date = '2025-09-02';
 
 
 
 SELECT * from estates
-WHERE street like 'Faldskærmsvej%';
+WHERE street = 'Højeloft Vænge 258';
+
+SELECT * from estates
+WHERE street like 'Højeloft%';
 
 
 
