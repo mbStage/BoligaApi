@@ -70,9 +70,20 @@ a.id
 , a.latitude
 , a.longitude
 FROM estates_new a
-JOIN estates b 
+JOIN ( 
+
+    SELECT 
+    a.id 
+    , a.price
+    , a.date
+    FROM estates a
+    JOIN max_date c ON a.id = c.id 
+    AND c.maxDate = a.date
+    WHERE CAST(a.price AS INTEGER) > 0
+
+ ) b 
 ON a.id = b.id
-AND a.price != b.price;
+WHERE a.price != b.price;
 
 INSERT INTO estates
 SELECT 
@@ -95,6 +106,15 @@ b.id
 , a.latitude
 , a.longitude
 FROM estates_new a
-JOIN estates b 
+JOIN ( 
+
+    SELECT 
+    *
+    FROM estates a
+    JOIN max_date c ON a.id = c.id 
+    AND c.maxDate = a.date
+    WHERE CAST(a.price AS INTEGER) > 0
+
+ ) b 
 ON a.id = b.id
-AND a.price != b.price;
+WHERE a.price != b.price;

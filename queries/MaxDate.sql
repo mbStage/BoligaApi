@@ -18,5 +18,9 @@ select
 id
 , max(date) as maxDate
 from estates 
+WHERE CAST(price AS INTEGER) > 0
 GROUP BY id) a 
-JOIN estates b ON a.id = b.id AND a.maxDate = b.date;
+JOIN estates b 
+ON a.id = b.id 
+AND a.maxDate = b.date
+WHERE CAST(price AS INTEGER) > 0;
