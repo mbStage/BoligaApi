@@ -132,14 +132,14 @@ def main():
         print(response)
 
     
-    # Keep track of the maximum date for each estate
-    exec_query('./data.db', 'MaxDate')
-
     # Insert new estates into the database
     exec_query('./data.db', 'insertNewEstates')
 
     # Update the days for sale for each estate
     exec_query('./data.db', 'updateDaysForSale')
+
+    # Keep track of the maximum date for each estate
+    exec_query('./data.db', 'MaxDate')
 
 if __name__ == "__main__":
     main() 

@@ -15,10 +15,13 @@ SELECT *
 
 FROM estates 
 --WHERE id = '2243280';
-WHERE date = '2025-09-05';
+WHERE date = '2025-09-10';
 
-SELECT * FROM max_date
-WHERE id = '2243280';
+--SELECT * FROM estates
+DELETE FROM estates
+WHERE id = '2181338'
+AND price = '-6495000'
+AND comment = 'Not for sale';
 
 
 /*

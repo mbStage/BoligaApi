@@ -47,7 +47,7 @@ a.id
 FROM estates a
 LEFT JOIN estates_new b ON a.id = b.id
 LEFT JOIN max_date c ON a.id = c.id AND c.maxDate = a.date AND c.maxComment != 'Not for sale'
-WHERE b.id IS NULL AND c.id IS NOT NULL;
+WHERE b.id IS NULL AND c.id IS NOT NULL AND CAST(a.price AS INTEGER) > 0;
 
 INSERT INTO estates
 SELECT 
